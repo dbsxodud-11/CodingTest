@@ -15,7 +15,7 @@ public class Luck_Balance {
             else answer += contests[i][0];
         }
         Collections.sort(important);
-        System.out.println(important.size());
+        //System.out.println(important.size());
         for(int i=0; i<important.size(); i++){
             if (i < important.size() - k) answer -= important.get(i);
             else answer += important.get(i);
