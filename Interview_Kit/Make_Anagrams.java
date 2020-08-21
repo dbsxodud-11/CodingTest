@@ -9,7 +9,7 @@ import java.util.regex.*;
 public class Make_Anagrams {
 
     // Complete the makeAnagram function below.
-    static int makeAnagram(final String a, final String b) {
+    static int Solution(final String a, final String b) {
        final Map<String, Integer> hashmap = new HashMap<>();
        
        final String[] a_split = a.split("");
@@ -44,14 +44,14 @@ public class Make_Anagrams {
 
         final String b = "dbf";//scanner.nextLine();
 
-        final int res = makeAnagram(a, b);
+        final int res = Solution(a, b);
 
         //bufferedWriter.write(String.valueOf(res));
         //bufferedWriter.newLine();
 
         //bufferedWriter.close();
 
-        //scanner.close();
+        scanner.close();
         System.out.print(res);
     }
 }
