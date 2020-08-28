@@ -9,27 +9,48 @@ public class Maximum_Subarray {
     static long maximumSum(long[] a, long m) {
         
         //1. Greedy
-        Map<Long, Integer> hashmap = new HashMap<>();
+        // Map<Long, Integer> hashmap = new HashMap<>();
+        // for(int i=0; i<a.length; i++){
+        //     hashmap.put(a[i], hashmap.getOrDefault(a[i], 0) + 1);
+        // }
+
+        // long answer = 0;
+        // for(int i=1; i<=a.length; i++){
+        //     int index = 0;
+        //     while(index + i <= a.length){
+        //         long sum = 0;
+        //         for(int k = index; k < index + i; k++){
+        //             sum += a[k];
+        //         }
+        //         if (answer < sum % m){
+        //             answer = sum % m;
+        //         }
+        //         index += Math.max(1, hashmap.get(a[index]) - i + 1);
+        //         //System.out.println(sum);
+        //         if (answer == m-1) return answer;
+        //     }
+        // }
+        // return answer;
+
+        //2. Kadane's Algorithm
+        long answer = 0;
+        long prefix = 0;
+        TreeSet<Long> binary_tree = new TreeSet<>();   
+        binary_tree.add((long)0);
+
         for(int i=0; i<a.length; i++){
-            hashmap.put(a[i], hashmap.getOrDefault(a[i], 0) + 1);
+            prefix = (prefix + a[i]) % m;
+            answer = Math.max(prefix, answer);
+
+            //SubArray에서 Maximum 확인
+            Long subarraymod = binary_tree.ceiling(prefix + 1);
+
+            if(subarraymod != null) {
+                answer = Math.max(m + prefix - subarraymod, answer);
+            }
+            binary_tree.add(prefix); 
         }
 
-        long answer = 0;
-        for(int i=1; i<=a.length; i++){
-            int index = 0;
-            while(index + i <= a.length){
-                long sum = 0;
-                for(int k = index; k < index + i; k++){
-                    sum += a[k];
-                }
-                if (answer < sum % m){
-                    answer = sum % m;
-                }
-                index += Math.max(1, hashmap.get(a[index]) - i + 1);
-                //System.out.println(sum);
-                if (answer == m-1) return answer;
-            }
-        }
         return answer;
     }
 
