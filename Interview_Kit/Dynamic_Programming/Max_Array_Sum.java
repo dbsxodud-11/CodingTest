@@ -8,27 +8,22 @@ public class Max_Array_Sum {
     // Complete the maxSubsetSum function below.
     static int maxSubsetSum(int[] arr) {
 
-        int max = 0;
-        int[] result = new int[arr.length+1];
+        int[] maxSum = new int[arr.length+1];
+        maxSum[0] = 0;
+        maxSum[1] = Math.max(0, arr[0]);
+        if(arr.length < 3) return arr[0] + arr[1];
+        maxSum[2] = Math.max(0, arr[1]);
 
-        result[0] = 0;
-        if(arr.length >= 3) {
-            result[1] = arr[0];
-            result[2] = arr[1]; 
-            
-            for(int i=3; i<=arr.length; i++){
-                if(arr[i-1] < 0){
-                    result[i] = Math.max(result[i-3], result[i-2]);
-                }else{
-                    result[i] = Math.max(arr[i-1] + result[i-3], arr[i-1] + result[i-2]);
-                }
-                //System.out.println(result[i]);
-                max = (max < result[i]) ? result[i] : max;
+        int answer = 0;
+        for(int i=2; i<arr.length; i++){
+            if(arr[i] < 0) maxSum[i+1] = Math.max(maxSum[i-1], maxSum[i-2]);
+            else{
+                maxSum[i+1] = Math.max(maxSum[i-1] + arr[i], maxSum[i-2] + arr[i]);
             }
-        }else{
-            return arr[0] + arr[1];
+            System.out.println(maxSum[i+1]);
+            answer = Math.max(answer, maxSum[i+1]);
         }
-        return max;
+        return answer;
     }  
 
     private static final Scanner scanner = new Scanner(System.in);
