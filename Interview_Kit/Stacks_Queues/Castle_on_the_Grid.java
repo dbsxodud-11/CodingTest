@@ -5,13 +5,34 @@ import java.util.*;
 
 public class Castle_on_the_Grid {
 
-    public static Queue<Integer> queue = new LinkedList<>();
+    public static Queue<Node> queue = new LinkedList<>();
     // Complete the minimumMoves function below.
+    public static class Node{
+        private int x;
+        private int y;
+        private int moves;
+
+        public Node(int x, int y, int moves){
+            this.x = x;
+            this.y = y;
+            this.moves = moves;
+        }
+
+        public int getMoves(){
+            return moves;
+        }
+
+        public int getX() {return x;}
+        public int getY() {return y;}
+
+        public boolean isEqual(Node node){
+            return node.getX() == x && node.getY() == y;
+        }
+    }
     static int minimumMoves(String[] grid, int startX, int startY, int goalX, int goalY) {
 
-        int moves = 0;
         boolean[][] map = new boolean[grid.length][grid[0].length()];
-        boolean[][] visited = new boolean[grid.length][grid[0].length()];
+        int[][] visited = new int[grid.length][grid[0].length()];
 
         for(int i=0; i<grid.length; i++){
             String[] split = grid[i].split("");
@@ -20,65 +41,75 @@ public class Castle_on_the_Grid {
             }
         }
 
-        visited[startX][startY] = true;
-        dfs(map, visited, startX, startY, goalX, goalY, moves, "None");
+        visited[startX][startY] = -1;
+        bfs(map, visited, startX, startY, goalX, goalY);
 
-        return queue.peek();
+        return queue.poll().getMoves();
     }
 
-    private static void dfs(boolean[][] map, boolean[][] visited, int startX, int startY, int goalX, int goalY, int moves, String before_action){
-        //Finished
-        
-        if(startX == goalX && startY == goalY){
-            //System.out.println(moves);
-            if(queue.isEmpty()) {
-                queue.offer(moves);
-                return;
-            }
-            if(queue.peek() > moves) {
-                queue.poll();
-                queue.offer(moves);
-                return;
-            }
-        }
-        
-        //1. Up
-        if(startX > 0 && map[startX-1][startY] && !visited[startX-1][startY]){
-            if(!before_action.equals("N")) moves++;
-            visited[startX-1][startY] = true;
-            dfs(map, visited, startX-1, startY, goalX, goalY, moves, "N");
-            visited[startX-1][startY] = false;
-            if(!before_action.equals("N")) moves--;
-        }
-        
-        //2. Down
-        if(startX < map.length-1 && map[startX+1][startY] && !visited[startX+1][startY]){
-            if(!before_action.equals("S")) moves++;
-            visited[startX+1][startY] = true;
-            dfs(map, visited, startX+1, startY, goalX, goalY, moves, "S");
-            visited[startX+1][startY] = false;
-            if(!before_action.equals("S")) moves--;
-        }
+    private static void bfs(boolean[][] map, int[][] visited, int startX, int startY, int goalX, int goalY){
 
-        //3. Right
-        if(startY < map[0].length-1 && map[startX][startY+1] && !visited[startX][startY+1]){
-            if(!before_action.equals("R")) moves++;
-            visited[startX][startY+1] = true;
-            dfs(map, visited, startX, startY+1, goalX, goalY, moves, "R");
-            visited[startX][startY+1] = false;
-            if(!before_action.equals("R")) moves--;
+        queue.add(new Node(startX, startY, 0));
+        Node end = new Node(goalX, goalY, 0);
+        while(!queue.isEmpty()){
+            if(queue.peek().isEqual(end)){
+                break;
+            }
+            Node before = queue.poll();
+            Set<Node> possibleMoves = possible(map, visited, before);
+            for(Node node : possibleMoves){
+                queue.add(node);
+            }
         }
+    }
 
-        //4. Left
-        if(startY > 0 && map[startX][startY-1] == true && !visited[startX][startY-1]){
-            if(!before_action.equals("L")) moves++;
-            visited[startX][startY-1] = true;
-            dfs(map, visited, startX, startY-1, goalX, goalY, moves, "L");
-            visited[startX][startY-1] = false;
-            if(!before_action.equals("L")) moves--;
+    private static Set<Node> possible(boolean[][] map, int[][] visited, Node before){
+        Set<Node> set = new HashSet<>();
+        int startX = before.getX();
+        int startY = before.getY();
+        int moves = before.getMoves();
+        int count = 0;
+        while(startX > 0 && map[startX-1][startY] && (visited[startX-1][startY] == 0 || visited[startX-1][startY] >= moves+1)){
+            startX--;
+            visited[startX][startY] = moves+1;
+            set.add(new Node(startX, startY, moves+1));
+            count++;
         }
-        
-        else return;
+        while(count != 0){
+            startX++;
+            count--;
+        }
+        while(startX < map.length-1 && map[startX+1][startY] && (visited[startX+1][startY] == 0 || visited[startX+1][startY] >= moves+1)){
+            startX++;
+            visited[startX][startY] = moves+1;
+            set.add(new Node(startX, startY, moves+1));
+            count++;
+        }
+        while(count != 0){
+            startX--;
+            count--;
+        }
+        while(startY > 0 && map[startX][startY-1] && (visited[startX][startY-1] == 0 || visited[startX][startY-1] >= moves+1)){
+            startY--;
+            visited[startX][startY] = moves+1;
+            set.add(new Node(startX, startY, moves+1));
+            count++;
+        }
+        while(count != 0){
+            startY++;
+            count--;
+        }
+        while(startY < map[0].length-1 && map[startX][startY+1] && (visited[startX][startY+1] == 0 || visited[startX][startY+1] >= moves+1)){
+            startY++;
+            visited[startX][startY] = moves+1;
+            set.add(new Node(startX, startY, moves+1));
+            count++;
+        }
+        while(count != 0){
+            startY--;
+            count--;
+        }
+        return set;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
