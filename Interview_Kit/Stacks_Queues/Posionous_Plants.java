@@ -72,6 +72,83 @@ public class Posionous_Plants {
 
         public int size() {return size;}
     }
+
+    public static class MyQueue<E>{
+
+        private static class Node<E>{
+
+            private E element;
+            private Node<E> next;
+
+            public Node(E element){
+                this.element = element;
+                this.next = null;
+            }
+
+            public E getElement() {return element;}
+            public Node<E> getNext() {return next;}
+        }
+
+        private Node<E> top;
+        private Node<E> bottom;
+        private int size;
+
+        public MyQueue(){
+            top = null;
+            bottom = null;
+            size = 0;
+        }
+
+        public void offer(E element){
+            Node<E> node = new Node<E>(element);
+            if(bottom == null) {
+                bottom = node;
+                top = node;
+            }else{
+               bottom.next = node;
+            node.next = null;
+            bottom = node; 
+            }
+            size++;
+        }
+
+        public E poll(){
+            if(isEmpty()) return null;
+            Node<E> newtop = top.getNext();
+            E answer = top.getElement();
+            top = newtop;
+            size--;
+            if(size == 1) bottom = top;
+            return answer;
+        }
+
+        public E peek() {return top.getElement();}
+        public E ground() {return bottom.getElement();}
+
+        public Node<E> getFirst() {return top;}
+        public Node<E> getLast() {return bottom;}
+
+        public void merge(MyQueue<E> add_queue){
+            Node<E> last = bottom;
+            Node<E> first = add_queue.getFirst();
+
+            last.next = first;
+            bottom = add_queue.getLast();
+            size += add_queue.size();
+            add_queue.merged();
+        }
+
+        public void clear(){
+            top = null;
+            bottom = null;
+            size = 0;
+        }
+
+        public boolean isEmpty() {return size == 0;}
+        
+        public int size() {return size;}
+        public void merged() {size = 0;}
+    }
     // Complete the poisonousPlants function below.
     static int poisonousPlants(int[] p) {
 
@@ -99,9 +176,80 @@ public class Posionous_Plants {
         // System.out.println(stack.size());
         // System.out.println(stack.isEmpty());
 
+        //Queue Implementation
+        // MyQueue<Integer> queue = new MyQueue<>();
+        // queue.offer(1);
+        // queue.offer(4);
+        // queue.offer(7);
+        // queue.offer(10);
+        // queue.poll();
+        // queue.poll();
+        // System.out.println(queue.peek());
+        // System.out.println(queue.ground());
+        // System.out.println(queue.size());
+        // System.out.println(queue.isEmpty());
+
+        // MyQueue<Integer> subqueue = new MyQueue<Integer>();
+        // subqueue.offer(3);
+        // subqueue.offer(5);
+        // subqueue.offer(7);
+
+        // queue.merge(subqueue);
+        // System.out.println(queue.peek());
+        // System.out.println(queue.ground());
+        // System.out.println(queue.size());
+        // System.out.println(queue.isEmpty());
+
+        LinkedList<MyQueue<Integer>> queue_list = new LinkedList<>();
+        MyQueue<Integer> queue = new MyQueue<>();
+        queue.offer(p[0]);
+        for(int i=1; i<p.length; i++){
+            if(queue.ground() < p[i]){
+                queue_list.add(queue);
+                MyQueue<Integer> next_queue = new MyQueue<>();
+                next_queue.offer(p[i]);
+                queue = next_queue;
+            }else{
+                queue.offer(p[i]);
+            }
+        }
+        queue_list.add(queue);
+        int answer = 0;
+        int count = 0;
+        while(count + queue_list.getFirst().size() < p.length){
+            answer++;
+            //1. poll element at top(except the first one)
+            Iterator<MyQueue<Integer>> iter_1 = queue_list.iterator();
+            iter_1.next();
+            while(iter_1.hasNext()){
+                MyQueue<Integer> element_1 = iter_1.next();
+                //System.out.println(element_1.peek());
+                if(!element_1.isEmpty()) {
+                    element_1.poll();
+                    count++;
+                }
+            }
+
+            //2. Merge if possible
+            Iterator<MyQueue<Integer>> iter_2 = queue_list.iterator();
+            MyQueue<Integer> queue_left = iter_2.next();
+            int last = queue_left.ground();
+            while(iter_2.hasNext()){
+                MyQueue<Integer> queue_right = iter_2.next();
+                if(queue_right.isEmpty()) continue;
+                else{                    
+                    if(queue_right.peek() <= last){
+                        queue_left.merge(queue_right);
+                        last = queue_right.ground();
+                    }else{
+                        queue_left = queue_right;
+                        last = queue_left.ground();
+                    }
+                }
+            }
+        }
         
-        
-        return 0;
+        return answer;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
