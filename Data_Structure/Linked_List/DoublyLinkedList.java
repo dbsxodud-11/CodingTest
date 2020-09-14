@@ -105,6 +105,44 @@ public class DoublyLinkedList<E> {
         return tail;
     }
 
+    public void merge(DoublyLinkedList<E> merged){
+        Node<E> first = merged.getFirst();
+        tail.next = first;
+        first.prev = tail;
+        Node<E> second = merged.getLast();
+        tail = second;
+        size += merged.size();
+    }
+
+    public boolean contains(E element){
+        Node<E> temp = head;
+        while(temp != null){
+            if(temp.getElement().equals(element)) return true;
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    public void reverse(){
+        if(size < 2) return;
+        else{
+            Node<E> prevNode = head;
+            Node<E> nextNode = head.next;
+            prevNode.next = null;
+            prevNode.prev = nextNode;
+            while(nextNode != null){
+                Node<E> temp = nextNode.next;
+                nextNode.prev = temp;
+                nextNode.next = prevNode;
+                prevNode = nextNode;
+                nextNode = temp;
+            }
+            Node<E> oldTail = tail;
+            tail = head;
+            head = oldTail;
+        }
+    }
+
     public boolean isEmpty(){
         return size == 0;
     }
