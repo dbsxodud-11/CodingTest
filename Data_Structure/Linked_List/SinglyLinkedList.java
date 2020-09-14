@@ -108,11 +108,39 @@ public class SinglyLinkedList<E>{
         return size;
     }
 
+    //Merge
     public void merge(SinglyLinkedList<E> merged){
         Node<E> first = merged.getFirst();
         tail.next = first;
         Node<E> second = merged.getLast();
         tail = second;
         size += merged.size();
+    }
+
+    //Contains - O(n)
+    public boolean contains(E element){
+        Node<E> temp = head;
+        while(temp != null){
+            if(temp.getElement().equals(element)) return true;
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    //Reverse - O(n)
+    public void reverse(){
+        if(size < 2) return;
+        Node<E> prevNode = head;
+        Node<E> nextNode = head.next;
+        prevNode.next = null;
+        while(nextNode != null){
+            Node<E> temp = nextNode.next;
+            nextNode.next = prevNode;
+            prevNode = nextNode;
+            nextNode = temp;
+        }
+        Node<E> oldHead = head;
+        head = tail;
+        tail = oldHead;
     }
 }
