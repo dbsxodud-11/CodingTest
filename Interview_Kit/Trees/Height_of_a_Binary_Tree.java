@@ -1,4 +1,4 @@
-package Trees;
+package Interview_Kit.Trees;
 
 import java.util.*;
 //import java.io.*;

@@ -1,19 +1,8 @@
-package Trees;
+package Interview_Kit.Trees;
 
 import java.util.*;
 //import java.io.*;
 
-class Node {
-    Node left;
-    Node right;
-    int data;
-    
-    Node(int data) {
-        this.data = data;
-        left = null;
-        right = null;
-    }
-}
 
 class Lowest_Common_Ancestor {
 
@@ -22,7 +11,19 @@ class Lowest_Common_Ancestor {
     	int data;
     	Node left;
     	Node right;
-	*/
+    */
+    private static class Node {
+        Node left;
+        Node right;
+        int data;
+        
+        Node(int data) {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+    }
+    
 	public static Node lca(Node root, int v1, int v2) {
           // Write your code here.
           Node ancestor = findAncestor(root, v1, v2);

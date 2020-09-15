@@ -1,5 +1,5 @@
-package Stack;
-import Linked_List.SinglyLinkedList;
+package Data_Structure.Stack;
+import Data_Structure.Linked_List.SinglyLinkedList;
 
 
 public class MyStack<E> {

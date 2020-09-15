@@ -1,20 +1,20 @@
-package Trees;
+package Interview_Kit.Trees;
 
 import java.util.*;
 
-class Node {
-    Node left;
-    Node right;
-    int data;
-    
-    Node(int data) {
-        this.data = data;
-        left = null;
-        right = null;
-    }
-}
-
 public class Is_Binary_Tree {
+
+    private static class Node {
+        Node left;
+        Node right;
+        int data;
+        
+        Node(int data) {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+    }
 
     public static boolean check(Node root){
         return check(root, -1, 100001);

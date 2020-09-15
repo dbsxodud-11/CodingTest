@@ -1,4 +1,4 @@
-package Queue;
+package Data_Structure.Queue;
 
 public class Main {
     

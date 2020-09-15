@@ -1,5 +1,5 @@
-package Queue;
-import Linked_List.SinglyLinkedList;
+package Data_Structure.Queue;
+import Data_Structure.Linked_List.SinglyLinkedList;
 
 public class MyQueue<E> {
     

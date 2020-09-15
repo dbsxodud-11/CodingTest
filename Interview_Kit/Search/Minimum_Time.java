@@ -1,4 +1,4 @@
-package Search;
+package Interview_Kit.Search;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package String_Manipulation;
+package Interview_Kit.String_Manipulation;
 
 import java.io.*;
 import java.util.*;

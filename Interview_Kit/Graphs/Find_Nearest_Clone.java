@@ -1,4 +1,4 @@
-package Graphs;
+package Interview_Kit.Graphs;
 
 import java.io.*;
 import java.util.*;

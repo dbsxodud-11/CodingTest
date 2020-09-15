@@ -1,4 +1,4 @@
-package Recursion;
+package Interview_Kit.Recursion;
 
 import java.io.*;
 import java.util.*;

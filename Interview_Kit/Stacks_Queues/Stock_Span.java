@@ -1,4 +1,4 @@
-package Stacks_Queues;
+package Interview_Kit.Stacks_Queues;
 
 //import java.io.*;
 import java.util.*;

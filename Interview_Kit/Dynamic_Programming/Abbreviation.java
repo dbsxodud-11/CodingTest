@@ -1,4 +1,4 @@
-package Dynamic_Programming;
+package Interview_Kit.Dynamic_Programming;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package Linked_Lists;
+package Interview_Kit.Linked_Lists;
 
 import java.io.*;
 import java.util.*;

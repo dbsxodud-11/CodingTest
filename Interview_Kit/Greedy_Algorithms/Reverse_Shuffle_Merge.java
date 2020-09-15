@@ -1,4 +1,4 @@
-package Greedy_Algorithms;
+package Interview_Kit.Greedy_Algorithms;
 
 import java.io.*;
 import java.util.*;
