@@ -6,16 +6,30 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Queue.Main",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Stack.Main",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
-            "mainClass": "${file}",
+            "mainClass": "${file}"
         },
         {
             "type": "java",
             "name": "Debug (Launch)-Main<CodingTest_afeff619>",
             "request": "launch",
             "mainClass": "Linked_List.Main",
-            "jdkpath":  "C:/Program Files/Java/jdk-12.0.2/bin",
+            "jdkpath": "C:/Program Files/Java/jdk-12.0.2/bin",
             "projectName": "CodingTest_afeff619"
         }
     ]
