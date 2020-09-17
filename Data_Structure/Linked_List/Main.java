@@ -1,5 +1,7 @@
 package Data_Structure.Linked_List;
 
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args){
@@ -41,15 +43,22 @@ public class Main {
         System.out.println(linked_list.contains(4));
 
         //Reverse
-        System.out.println("1\t3\t6\t5\t7\t8");
-        linked_list.reverse();
-        int size = linked_list.size();
-        while(size > 0){
-            System.out.print(linked_list.peek() + "\t");
-            linked_list.removeFirst();
-            size--;
-        }
+        // System.out.println("1\t3\t6\t5\t7\t8");
+        // linked_list.reverse();
+        // int size = linked_list.size();
+        // while(size > 0){
+        //     System.out.print(linked_list.peek() + "\t");
+        //     linked_list.removeFirst();
+        //     size--;
+        // }
 
+        //Iterator
+        Iterator<Integer> iter = linked_list.iterator();
+        while(iter.hasNext()){
+            System.out.print(iter.next() + "\t");
+        }
+        System.out.println();
+        
         System.out.println("---------------------------------------------------------");
 
         //2. Doubly Linked List
@@ -92,11 +101,13 @@ public class Main {
         //Reverse
         System.out.println("1\t3\t6\t5\t7\t8");
         doubly_linked_list.reverse();
-        size = doubly_linked_list.size();
+        int size = doubly_linked_list.size();
         while(size > 0){
             System.out.print(doubly_linked_list.peek() + "\t");
             doubly_linked_list.removeFirst();
             size--;
         }
+
+        
     }
 }

@@ -8,6 +8,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
+            "mainClass": "Data_Structure.Linked_List.Main",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
             "mainClass": "Data_Structure.Array_List.Main",
             "projectName": "CodingTest_afeff619"
         },

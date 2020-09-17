@@ -1,6 +1,9 @@
 package Data_Structure.Linked_List;
 
-public class SinglyLinkedList<E>{
+import java.lang.Iterable;
+import java.util.Iterator;
+
+public class SinglyLinkedList<E> implements Iterable<E>{
 
     private static class Node<E>{
         private E element;
@@ -142,5 +145,25 @@ public class SinglyLinkedList<E>{
         Node<E> oldHead = head;
         head = tail;
         tail = oldHead;
+    }
+
+    //Iterator
+    public Iterator<E> iterator(){
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<E>{
+        private Node<E> temp = head;
+
+        public boolean hasNext(){
+            return temp != null;
+        }
+
+        public E next(){
+            if(!hasNext()) return null;
+            E element = temp.getElement();
+            temp = temp.next;
+            return element;
+        }
     }
 }
