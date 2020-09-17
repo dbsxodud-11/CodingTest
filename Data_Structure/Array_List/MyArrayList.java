@@ -59,6 +59,15 @@ public class MyArrayList<E> {
         return data[index];
     }
 
+    public Object set(Object element, int index){
+        if (index < 0 || index >= data.length) return null;
+        else{
+            Object old = data[index];
+            data[index] = element;
+            return old;
+        }
+    }
+
     public boolean isEmpty(){
         return size == 0;
     }

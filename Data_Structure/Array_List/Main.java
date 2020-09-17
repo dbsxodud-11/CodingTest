@@ -23,5 +23,8 @@ public class Main {
         arraylist.remove(2);
         arraylist.remove(2);
         System.out.println(arraylist.get(2));
+
+        arraylist.set(10, 2);
+        System.out.println(arraylist.get(2));
     }
 }
