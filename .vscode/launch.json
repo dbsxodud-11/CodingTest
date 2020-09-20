@@ -6,58 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Main",
+            "name": "CodeLens (Launch) - Time_Conversion",
             "request": "launch",
-            "mainClass": "Data_Structure.HashTable.Main",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Data_Structure.PriorityQueue.Main",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Data_Structure.Tree.Main",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Data_Structure.Array.Main",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Data_Structure.Linked_List.Main",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Data_Structure.Array_List.Main",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Digital_Sum",
-            "request": "launch",
-            "mainClass": "Interview_Kit.Recursion.Digital_Sum",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Crossword_Puzzle",
-            "request": "launch",
-            "mainClass": "Interview_Kit.Recursion.Crossword_Puzzle",
+            "mainClass": "Algorithms.WarmUp.Time_Conversion",
             "projectName": "CodingTest_afeff619"
         }
     ]
