@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Append_Delete",
+            "request": "launch",
+            "mainClass": "Algorithms.Implementation.Append_Delete",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Extra_Factorials",
             "request": "launch",
             "mainClass": "Algorithms.Implementation.Extra_Factorials",
