@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Selection_Sort",
+            "request": "launch",
+            "mainClass": "Algorithms.Sorting.Selection_Sort",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Insertion_Sort",
+            "request": "launch",
+            "mainClass": "Algorithms.Sorting.Insertion_Sort",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Non_Divisible",
             "request": "launch",
             "mainClass": "Algorithms.Implementation.Non_Divisible",
