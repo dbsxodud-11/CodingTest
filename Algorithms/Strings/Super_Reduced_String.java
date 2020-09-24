@@ -1,12 +1,10 @@
 package Algorithms.Strings;
 
 import java.io.*;
-import java.util.Queue;
-import java.util.LinkedList;
 
 public class Super_Reduced_String {
 
-    public static String superReduString(String s){
+    public static String superReducedString(String s){
 
         StringBuilder sb = new StringBuilder();
         sb.append(s.charAt(0));
