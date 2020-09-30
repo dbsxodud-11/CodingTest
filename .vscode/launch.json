@@ -6,44 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Highset_Value_Palindrome",
+            "name": "CodeLens (Launch) - Sherlock_Anagrams",
             "request": "launch",
-            "mainClass": "Algorithms.Strings.Highset_Value_Palindrome",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Selection_Sort",
-            "request": "launch",
-            "mainClass": "Algorithms.Sorting.Selection_Sort",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Insertion_Sort",
-            "request": "launch",
-            "mainClass": "Algorithms.Sorting.Insertion_Sort",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Non_Divisible",
-            "request": "launch",
-            "mainClass": "Algorithms.Implementation.Non_Divisible",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Append_Delete",
-            "request": "launch",
-            "mainClass": "Algorithms.Implementation.Append_Delete",
-            "projectName": "CodingTest_afeff619"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Extra_Factorials",
-            "request": "launch",
-            "mainClass": "Algorithms.Implementation.Extra_Factorials",
+            "mainClass": "Algorithms.Strings.Sherlock_Anagrams",
             "projectName": "CodingTest_afeff619"
         }
     ]
