@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - DNA_health",
+            "request": "launch",
+            "mainClass": "Algorithms.Strings.DNA_health",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Steady_Gene",
             "request": "launch",
             "mainClass": "Algorithms.Strings.Steady_Gene",
