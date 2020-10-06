@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Quick_Sort",
+            "request": "launch",
+            "mainClass": "Algorithms.Sorting.Quick_Sort",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Merge_Sort",
             "request": "launch",
             "mainClass": "Algorithms.Sorting.Merge_Sort",
