@@ -19,7 +19,7 @@ def generate_input_file() :
 
     return input_file
 
-def shuffle_songs(music_list) :
+def shuffle_songs() :
 
     with open("music.txt", "r") as f :
         lines = f.readlines()
@@ -51,8 +51,8 @@ def shuffle_songs(music_list) :
                 intervals[singer].append(random.randint(0, 100//(number_of_songs.get(singer))))
             # Else : Randomly Distributed Interval
             else :
-                intervals[singer].append(intervals.get(singer)[-1] + random.randint(0, 100//(number_of_songs.get(singer))))
-        # print(str(intervals.get(singer)))
+                intervals[singer].append(intervals.get(singer)[-1] + random.randint(1, 100//(number_of_songs.get(singer))))
+        print(str(intervals.get(singer)))
     # Shuffle Songs
     playlist = [None for _ in range(100)]
     for singer, interval in intervals.items() :
@@ -67,8 +67,8 @@ def shuffle_songs(music_list) :
     
 if __name__ == "__main__" :
     
-    music_list = generate_input_file()
-    playlist = shuffle_songs(music_list)
+    #music_list = generate_input_file()
+    playlist = shuffle_songs()
 
     for album in playlist : 
         print(album)
