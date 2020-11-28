@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Test",
+            "request": "launch",
+            "mainClass": "Algorithms.Strings.Test",
+            "projectName": "CodingTest_afeff619"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Counting_Sort",
             "request": "launch",
             "mainClass": "Algorithms.Sorting.Counting_Sort",
