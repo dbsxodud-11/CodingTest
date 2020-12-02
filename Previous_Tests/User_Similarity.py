@@ -1,4 +1,5 @@
 import math
+import operator
 
 def generate_input_file() :
 
@@ -8,6 +9,7 @@ def generate_input_file() :
     input_file.write("1 2 3 5 4\n")
     input_file.write("4 3   4 2\n")
     input_file.write("1 5   3 4\n")
+    input_file.write("2     1 5\n")
     input_file.close()
 
 def getScore(user_rating, i, j) :
@@ -72,12 +74,14 @@ if __name__ == "__main__" :
         lines = f.readlines()
     items = 5
     user_rating = [[0 for _ in range(items)] for _ in range(len(lines))]
+    blank = [[0 for _ in range(items)] for _ in range(len(lines))]
 
     for i, line in enumerate(lines) :
         user_i = line.rstrip("\n")
         for j in range(items) :
             if user_i[2*j] != ' ' :
                 user_rating[i][j] = int(user_i[2*j])
+
         # print(str(user_rating[i]))
 
     # Fill the Blank
@@ -85,9 +89,11 @@ if __name__ == "__main__" :
         for j in range(len(user_rating[i])) :
             if user_rating[i][j] == 0 :
                 score = getScore(user_rating, i, j)
-                user_rating[i][j] = int(score*100) * 0.01
+                blank[i][j] = int(round(score*100)) * 0.01
+
+    # Merge
+    for i in range(len(lines)) :
+        user_rating[i] = list(map(operator.add, user_rating[i], blank[i]))
 
     for user_i_ in user_rating :
         print(user_i_)
-
-    
